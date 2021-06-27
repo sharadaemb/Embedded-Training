@@ -1,0 +1,11 @@
+What does a moxa device do?
+Moxa's terminal servers are equipped with the specialized functions and security features needed to establish reliable terminal connections to a network, and can connect various devices such as terminals, modems, data switches, mainframe computers, and POS devices to make them available to network hosts and process.
+
+
+device module:http://www.usconverters.com/moxa-nport-5110-serial-ethernet-converter
+
+
+why inline function needs static storage class ?
+The point of making a function inline is to hint to the compiler that it is worth making some form of extra effort to call the function faster than it would otherwise - generally by substituting the code of the function into its caller. As well as eliminating the need for a call and return sequence, it might allow the compiler to perform certain optimizations between the bodies of both functions.
+
+Sometimes it is necessary for the compiler to emit a stand-alone copy of the object code for a function even though it is an inline function - for instance if it is necessary to take the address of the function, or if it can't be inlined in some particular context, or (perhaps) if optimization has been turned off. (And of course, if you use a compiler that doesn't understand inline, you'll need a stand-alone copy of the object code so that all the calls actually work at all.)
