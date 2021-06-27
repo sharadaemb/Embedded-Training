@@ -1,0 +1,8 @@
+2.How to print the current time, seconds, milliseconds, nanoseconds in linux 
+date +"%T" display current time
+date +"%d-%m-%y %T.%S %Z"  Display date time second zone
+date +"%d-%m-%y %T.%3M %Z" Display date time millisecond zone
+date +"%d-%m-%y %T.%3N %Z" Display date time nanosecond zone
+
+
+https://stackoverflow.com/questions/16548528/command-to-get-time-in-milliseconds
