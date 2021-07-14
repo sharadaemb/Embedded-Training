@@ -1,1 +1,6 @@
-#assignment
+Assignment Questions - 14/07/2021:
+1. Update the given program with read/write system calls.
+   ( program ref: pageno:30-31 in the above-shared material )
+2.Download and explore CLI parser.
+  Ref: https://sourceforge.net/projects/cliparser/
+3. Explore doxygen.
