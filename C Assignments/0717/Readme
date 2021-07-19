@@ -1,1 +1,2 @@
 #Assignment
+1.Execute the programme with fork() and wait() system call to understand the zombie and orphan concepts.
