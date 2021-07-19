@@ -1,0 +1,6 @@
+/* Program we can get the PID and PPID of a process*/
+#include<unistd.h>
+
+pid_t getpid();
+pid_t getppid();
+
