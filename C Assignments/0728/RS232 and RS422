@@ -1,0 +1,107 @@
+*The RS-232, RS-422 and RS-485 designations refer to interfaces for digital data transmission. 
+The RS-232 standard is better known as a normal computer COM port or serial port (although Ethernet, FireWire and USB can also be considered as a serial port).
+The RS-422 and RS-485 interfaces are widely used in the industry for connecting various equipment
+
+*Information transmitted via RS-232, RS-422 and RS-485 interfaces is structured as a protocol, for example, the Modbus RTU protocol is widely used in the industry.
+
+Description of the RS-232 interface
+The RS-232 interface (TIA / EIA-232) is intended for the organization of data transfer between the transmitter or terminal (Data Terminal Equipment, DTE) and the receiver or communication equipment (Data Communications Equipment, DCE) in the point-to-point scheme.
+
+The speed of the RS-232 depends on the distance between the devices, usually at a distance of 15 meters the speed is 9600 bps. At a minimum distance, the speed is usually 115.2 kbps, but there is hardware that supports speeds of up to 921.6 kbps.
+
+The RS-232 interface operates in full-duplex mode, which allows you to send and receive information at the same time, because different lines are used for receiving and transmitting. This is in contrast to the half-duplex mode, when one link is used to receive and transmit data, which imposes a restriction on simultaneous operation, so in a half-duplex mode at one time, either the reception or transmission of information is possible.
+
+Information on the RS-232 interface is transmitted digitally by logical 0 and 1.
+The logical "1" (MARK) corresponds to a voltage in the range from -3 to -15 V.
+The logical "0" (SPACE) corresponds to a voltage in the range from +3 to +15 V.
+
+In addition to the two receive and transmit lines, special lines for hardware flow control and other functions are available on the RS-232.
+
+For connection to RS-232, a special D-sub connector is used, usually a 9-pin DB9, and a 25-pin DB25 is used less often.
+
+DB connectors are divided into:
+
+Male - "daddy" (plug, pin)
+Female - "mother" (socket, socket).
+
+
+There are three types of connection of devices to RS-232: terminal-terminal DTE-DTE, terminal-communication equipment DTE-DCE, modem-modem DCE-DCE.
+
+The DTE-DCE cable is called a "straight cable", because the contacts are connected one to one.
+
+A DCE-DCE cable is called a "null modem cable", or in another way a cross-over cable.
+
+
+To work with RS-232 devices, you usually need only 3 contacts: RXD, TXD and GND. But some devices require all 9 contacts to support the flow control function.
+
+Structure of the transmitted data in RS-232
+
+One message sent over RS-232/422/485 consists of a start bit, several data bits, a parity bit and a stop bit.
+
+The start bit is the bit denoting the beginning of the transmission, usually 0.
+
+Data bits - 5, 6, 7 or 8 bits of data. The first bit is the less significant bit.
+
+Parity bit - A bit intended for parity checking. Serves for detecting errors. It can take the following values:
+
+The parity (EVEN) takes such value that the number of units in the message is even
+Oddness (ODD), takes on such value that the number of units in the message is odd
+Always 1 (MARK), the parity bit will always be 1
+Always 0 (SPACE), the parity bit will always be 0
+Not used (NONE)
+Stop bit - a bit indicating the completion of the message transmission, can take the values 1, 1.5 (Data bit = 5), 2. For example, a reduction of 8E1 means that 8 data bits are transmitted, a parity bit is used in EVEN mode and a stop bit occupies one bit.
+
+***************************************************Flow control in RS-232******************************************************
+In order not to lose data, there is a mechanism for controlling the flow of data, which allows to stop temporarily transferring data to prevent the buffer from overflowing.
+
+There is a hardware and software control method.
+
+The hardware method uses the RTS / CTS outputs. If the transmitter is ready to send data, then it sets the signal on the RTS line. If the receiver is ready to receive data, it sets the signal on the CTS line. If one of the signals is not set, no data transfer will occur.
+
+The software method uses the Xon and Xoff characters (in the ASCII character Xon = 17, Xoff = 19) transmitted using the same TXD / RXD communication lines as the main data instead of the pins. If the data cannot be received, the receiver transmits the Xoff symbol. To resume data transmission, the Xon symbol is sent.
+
+############                     How can I check the operation of RS-232?              ######################
+
+When using 3 contacts it is enough to close RXD and TXD with each other. Then all the transferred data will be accepted back. If you have a full RS-232, then you need to unzip a special stub. The following contacts must be connected in it:
+
+DB9	DB25	Connect
+1 + 4 + 6	6 + 8 + 20	DTR -> CD + DSR
+2 + 3	2 + 3	Tx -> Rx
+7 + 8	4 + 5	RTS -> CTS
+
+
+*Description of the RS-422 interface
+
+The RS-422 interface is similar to RS-232. Allows you to simultaneously send and receive messages on separate lines (full duplex), but uses a differential signal for this, i.e. The potential difference between conductors A and B.
+
+The data transfer speed in RS-422 depends on the distance and can vary from 10 kbps (1200 meters) to 10 Mbps (10 meters).
+
+In the RS-422 network, there can only be one transmitting device and up to 10 receiving devices.
+
+The RS-422 line is 4 wires for data transmission (2 twisted wires for transmission and 2 twisted wires for receiving) and one common GND ground wire.
+
+Twisting wires (twisted pair) with each other allows you to get rid of interference and interference, because the interference acts equally on both wires, and the information is extracted from the potential difference between the conductors A and B of one line.
+
+The voltage on the data lines can be in the range from -6 V to +6 V.
+
+The logical difference between A and B is greater than +0.2 V.
+
+Logical 1 corresponds to the difference between A and B less than -0.2 V.
+
+The RS-422 standard does not define a specific type of connector, usually it can be a terminal block or a DB9 connector.
+
+RS-422 pinout depends on the manufacturer of the device and is specified in the documentation for it.
+
+When connecting an RS-422 device, you need to make a crosshair between the RX and TX pins, as shown in the figure.
+
+
+Because the distance between the receiver and the transmitter RS-422 can reach 1200 meters, then to prevent reflection of the signal from the end of the line, a special 120-ohm termination resistor or "terminator" is put. This resistor is set between RX + and RX-contacts at the beginning and end of the line.
+
+How can I check the operation of RS-422?
+To test devices with RS-422, it is better to use a converter from RS-422 to RS-232 or USB (I-7561U). Then you can use the software to work with the COM port.
+
+
+
+
+
+ref link:https://ipc2u.com/articles/knowledge-base/the-main-differences-between-rs-232-rs-422-and-rs-485/
